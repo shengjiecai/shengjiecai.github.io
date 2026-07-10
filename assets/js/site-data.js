@@ -7,29 +7,28 @@
 */
 
 window.SITE = {
-  name: "Your Name",
-  chineseName: "", 
+  name: "Shengjie Cai",
+  chineseName: "蔡晟杰", 
   currentPosition: "Ph.D. Student in Economics",
-  affiliation: "Department of Economics, Your University",
-  location: "City, Country",
+  affiliation: "Insitute of Economics, Tsinghua University",
+  location: "Beijing China",
   profileImage: "assets/img/profile-placeholder.svg",
   cvUrl: "assets/files/cv.pdf",
 
   contact: {
-    email: "your.email@university.edu",
-    office: "Office / Building, University",
-    phone: "",
+    email: "caisj24@mails.tsinghua.edu.cn",
+    office: "MingZhai Building, Tsinghua University",
+    phone: "+86 13857607577",
     googleScholar: "",
-    github: "",
-    linkedin: ""
+    ssrn: ""
   },
 
   introduction: [
-    "I am a graduate student in economics. My research interests include macroeconomics, international economics, political economy, and applied econometrics.",
-    "This website collects my academic work, teaching assistantship experience, and selected personal notes on reading and daily reflections."
+    "I am a Ph.D. candidate in economics in Tsinghua . My research interests include growth, network economics, and digital economics.",
+    "Before the Ph.D. career, I majored in Mathematics and Applied Mathematics at Tsinghua University, with a minor in Economics and Finance."
   ],
 
-  researchSummary: "My research interests are currently centered on macroeconomics, international economics, economic growth, and quantitative methods. Replace this paragraph with a concise description of your agenda.",
+  researchSummary: "My research interests are currently centered on growth, network economics, and digital economics.",
 
   research: [
     {
@@ -76,5 +75,5 @@ window.SITE = {
 
   personalSummary: "Personal Space is for non-research writing: reading notes, short essays, and diary-style reflections. You can keep this section public, or later make selected pages private by not publishing them.",
 
-  footerNote: "© Your Name. Last updated 2026."
+  footerNote: "© Shengjie Cai. Last updated Jul 10, 2026."
 };
