@@ -48,9 +48,15 @@
       <a href="index.html">Home</a>
       <a href="research.html">Research</a>
       <a href="teaching.html">Teaching Assistantship</a>
-      <!-- <a href="personal.html">Personal Space</a> -->
     `;
-
+    <!--
+    nav.innerHTML = `
+      <a href="index.html">Home</a>
+      <a href="research.html">Research</a>
+      <a href="teaching.html">Teaching Assistantship</a>
+      <a href="personal.html">Personal Space</a>
+    `;
+    -->
     const current = window.location.pathname.split("/").pop() || "index.html";
     $$("#site-nav a").forEach((a) => {
       const href = a.getAttribute("href");
