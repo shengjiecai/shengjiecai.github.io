@@ -1,15 +1,15 @@
 :root {
-  --bg: #f7f6f2;
+  --bg: #ffffff;
   --surface: #ffffff;
-  --surface-2: #fbfaf7;
-  --text: #222222;
+  --surface-2: #f8f8f8;
+  --text: #1f1f1f;
   --muted: #666666;
-  --line: #dedbd2;
-  --accent: #5b1f1f;
-  --accent-2: #8b4a33;
-  --shadow: 0 12px 30px rgba(30, 30, 30, 0.07);
-  --radius: 16px;
-  --max: 1080px;
+  --line: #dddddd;
+  --accent: #003366;
+  --accent-2: #00509e;
+  --shadow: none;
+  --radius: 4px;
+  --max: 1050px;
 }
 
 * {
@@ -27,7 +27,7 @@ body {
   font-family: Georgia, "Times New Roman", serif;
   line-height: 1.65;
 }
-
+<!--
 body::before {
   content: "";
   position: fixed;
@@ -38,7 +38,7 @@ body::before {
     radial-gradient(circle at bottom right, rgba(139, 74, 51, 0.07), transparent 28rem);
   z-index: -1;
 }
-
+-->
 a {
   color: var(--accent);
   text-decoration-thickness: 0.08em;
