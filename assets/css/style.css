@@ -1,0 +1,376 @@
+:root {
+  --bg: #f7f6f2;
+  --surface: #ffffff;
+  --surface-2: #fbfaf7;
+  --text: #222222;
+  --muted: #666666;
+  --line: #dedbd2;
+  --accent: #5b1f1f;
+  --accent-2: #8b4a33;
+  --shadow: 0 12px 30px rgba(30, 30, 30, 0.07);
+  --radius: 16px;
+  --max: 1080px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.65;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at top left, rgba(91, 31, 31, 0.08), transparent 28rem),
+    radial-gradient(circle at bottom right, rgba(139, 74, 51, 0.07), transparent 28rem);
+  z-index: -1;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.22em;
+}
+
+a:hover {
+  color: var(--accent-2);
+}
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: rgba(247, 246, 242, 0.92);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-inner {
+  width: min(var(--max), calc(100% - 32px));
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  min-height: 74px;
+}
+
+.site-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.site-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.site-nav a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.94rem;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  background: var(--surface);
+  color: var(--accent);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+.container {
+  width: min(var(--max), calc(100% - 32px));
+  margin: 0 auto;
+  padding: 44px 0 64px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) 320px;
+  gap: 36px;
+  align-items: start;
+}
+
+.hero-text h1,
+.page-title h1,
+.article-full h1 {
+  font-size: clamp(2.1rem, 5vw, 4.4rem);
+  line-height: 1.04;
+  margin: 0 0 12px;
+  letter-spacing: -0.04em;
+}
+
+.position {
+  font-size: 1.22rem;
+  margin: 0;
+}
+
+.affiliation {
+  color: var(--muted);
+  margin: 4px 0 24px;
+}
+
+.intro {
+  font-size: 1.05rem;
+  max-width: 760px;
+}
+
+.profile-card,
+.card,
+.article-card {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.profile-card {
+  padding: 18px;
+}
+
+.profile-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  font-size: 0.97rem;
+}
+
+.contact-list li + li {
+  margin-top: 8px;
+}
+
+.link-row,
+.profile-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.button-link,
+.small-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  text-decoration: none;
+  background: var(--surface-2);
+  color: var(--accent);
+  font-size: 0.95rem;
+}
+
+.button-link:hover,
+.small-link:hover {
+  border-color: rgba(91, 31, 31, 0.35);
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 44px;
+}
+
+.card {
+  padding: 24px;
+}
+
+.card h2,
+.article-card h3 {
+  margin: 0 0 8px;
+  line-height: 1.24;
+}
+
+.card p:last-child,
+.article-card p:last-child {
+  margin-bottom: 0;
+}
+
+.section-heading {
+  margin: 56px 0 16px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+
+.section-heading h2 {
+  margin-bottom: 0;
+}
+
+.page-title {
+  margin-bottom: 30px;
+}
+
+.page-title p {
+  max-width: 800px;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.paper-card,
+.teaching-card {
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  color: var(--accent-2);
+  font-size: 0.86rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.article-list {
+  display: grid;
+  gap: 14px;
+}
+
+.article-card {
+  padding: 20px;
+}
+
+.article-card.compact {
+  box-shadow: none;
+  background: var(--surface-2);
+}
+
+.article-card h3 a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.article-card h3 a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 26px;
+  text-decoration: none;
+}
+
+.article-full {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.markdown-body {
+  font-size: 1.06rem;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3 {
+  line-height: 1.25;
+  margin-top: 1.8em;
+}
+
+.markdown-body blockquote {
+  margin: 22px 0;
+  padding: 12px 18px;
+  border-left: 4px solid var(--accent-2);
+  background: var(--surface-2);
+  color: var(--muted);
+}
+
+.markdown-body code {
+  background: var(--surface-2);
+  padding: 0.08em 0.3em;
+  border-radius: 5px;
+  border: 1px solid var(--line);
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.footer-inner {
+  width: min(var(--max), calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+@media (max-width: 860px) {
+  .header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 16px 0;
+    gap: 10px;
+  }
+
+  .site-nav {
+    justify-content: flex-start;
+  }
+
+  .hero,
+  .section-grid,
+  .two-column {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card {
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 520px) {
+  .container {
+    width: min(100% - 24px, var(--max));
+    padding-top: 28px;
+  }
+
+  .site-nav a {
+    padding: 6px 9px;
+    font-size: 0.9rem;
+  }
+
+  .card,
+  .article-card {
+    padding: 18px;
+  }
+}

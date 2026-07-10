@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Space | Personal Academic Website</title>
+  <meta name="description" content="Reading notes and diary entries.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="personal">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="index.html">Personal Academic Website</a>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation"></nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-title">
+      <h1>Personal Space</h1>
+      <p id="personal-page-summary"></p>
+    </section>
+
+    <section class="two-column" aria-label="Personal writing lists">
+      <div>
+        <div class="section-heading">
+          <h2>Reading</h2>
+        </div>
+        <div id="reading-list" class="article-list"></div>
+      </div>
+
+      <div>
+        <div class="section-heading">
+          <h2>Diary</h2>
+        </div>
+        <div id="diary-list" class="article-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span id="footer-note"></span>
+    </div>
+  </footer>
+
+  <script src="assets/js/site-data.js"></script>
+  <script src="articles/articles.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

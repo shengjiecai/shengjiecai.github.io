@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home | Personal Academic Website</title>
+  <meta name="description" content="Personal academic website.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="home">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="index.html">Personal Academic Website</a>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation"></nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-text">
+        <h1 id="person-name">Your Name</h1>
+        <p id="current-position" class="position"></p>
+        <p id="affiliation" class="affiliation"></p>
+        <div id="intro-text" class="intro"></div>
+        <div id="profile-links" class="profile-links"></div>
+      </div>
+
+      <aside class="profile-card" aria-label="Profile and contact information">
+        <img id="profile-photo" src="assets/img/profile-placeholder.svg" alt="Profile photo">
+        <div id="contact-details"></div>
+      </aside>
+    </section>
+
+    <section class="section-grid" aria-label="Main sections">
+      <article class="card">
+        <div class="eyebrow">Academic</div>
+        <h2>Research</h2>
+        <p id="research-summary"></p>
+        <p><a href="research.html">View research →</a></p>
+      </article>
+
+      <article class="card">
+        <div class="eyebrow">Teaching</div>
+        <h2>Teaching Assistantship</h2>
+        <p id="teaching-summary"></p>
+        <p><a href="teaching.html">View teaching records →</a></p>
+      </article>
+
+      <article class="card">
+        <div class="eyebrow">Personal</div>
+        <h2>Personal Space</h2>
+        <p id="personal-summary"></p>
+        <p><a href="personal.html">View personal writing →</a></p>
+      </article>
+    </section>
+
+    <section class="two-column section-heading" aria-label="Recent personal articles">
+      <div>
+        <h2>Recent Reading</h2>
+        <div id="home-latest-reading" class="article-list"></div>
+      </div>
+      <div>
+        <h2>Recent Diary</h2>
+        <div id="home-latest-diary" class="article-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span id="footer-note"></span>
+    </div>
+  </footer>
+
+  <script src="assets/js/site-data.js"></script>
+  <script src="articles/articles.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
