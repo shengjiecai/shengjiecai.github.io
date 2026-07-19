@@ -143,7 +143,8 @@
         <article class="card paper-card">
           <div class="eyebrow">${escapeHTML(item.status || "Research")}${item.year ? ` · ${escapeHTML(item.year)}` : ""}</div>
           <h2>${escapeHTML(item.title)}</h2>
-          ${item.coauthors ? `<p class="muted">${escapeHTML(item.coauthors)}</p>` : ""}
+            ${item.coauthors ? `<p class="muted">${escapeHTML(item.coauthors)}</p>` : ""}
+            ${item.journal ? `<p class="journal"><strong>Published in:</strong> <em>${escapeHTML(item.journal)}</em></p>` : ""}
           <p>${escapeHTML(item.abstract || "")}</p>
           ${links ? `<div class="link-row">${links}</div>` : ""}
         </article>
