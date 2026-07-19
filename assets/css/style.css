@@ -27,18 +27,7 @@ body {
   font-family: Georgia, "Times New Roman", serif;
   line-height: 1.65;
 }
-<!--
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at top left, rgba(91, 31, 31, 0.08), transparent 28rem),
-    radial-gradient(circle at bottom right, rgba(139, 74, 51, 0.07), transparent 28rem);
-  z-index: -1;
-}
--->
+
 a {
   color: var(--accent);
   text-decoration-thickness: 0.08em;
@@ -51,8 +40,7 @@ a:hover {
 
 .site-header {
   border-bottom: 1px solid var(--line);
-  background: rgba(247, 246, 242, 0.92);
-  backdrop-filter: blur(10px);
+  background: #e6e6e6;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -112,10 +100,12 @@ a:hover {
   align-items: start;
 }
 
-.hero-text h1,
+.hero-text h1 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
 .page-title h1,
 .article-full h1 {
-  font-size: clamp(2.1rem, 5vw, 4.4rem);
+  font-size: clamp(2rem, 4vw, 3.4rem);
   line-height: 1.04;
   margin: 0 0 12px;
   letter-spacing: -0.04em;
