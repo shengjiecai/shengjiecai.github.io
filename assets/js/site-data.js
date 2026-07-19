@@ -32,20 +32,42 @@ window.SITE = {
 
   research: [
     {
-      title: "Working Paper Title One",
-      status: "Working paper",
-      coauthors: "with Coauthor Name",
+      title: "A Behavioural Theory of Trade",
+      status: "Published paper",
+      coauthors: "with Jinglei Huang, Danxia Xie",
+      year: "2024",
+      abstract: "A short paper investigates how creativity preference affects trade both theoretically and empirically.",
+      links: [
+        { label: "Paper", url: "https://www.tandfonline.com/doi/full/10.1080/13504851.2024.2418589" },
+        { label: "Slides", url: "#" }
+      ]
+    },
+    {
+      title: "Computing Power Infrastructure, Collaboration between Computing and Networks, and Regional Economic Growth",
+      status: "Working paper, under review",
+      coauthors: "with Jinglei Huang, Danxia Xie, Rouhan Yin",
       year: "2026",
-      abstract: "One-sentence or one-paragraph abstract. State the research question, empirical/theoretical setting, and core finding.",
+      abstract: "The article examines how data and computing power infrastructure synergistically influence local and regional economic growth.",
       links: [
         { label: "Paper", url: "#" },
         { label: "Slides", url: "#" }
       ]
     },
     {
-      title: "Research in Progress Title Two",
-      status: "Research in progress",
-      coauthors: "",
+      title: "Algorithm in the AI and Digital Economy",
+      status: "Working paper",
+      coauthors: "with Danxia Xie",
+      year: "2026",
+      abstract: "The paper construct algorithm-driven growth based on foundamentals of computer science.",
+      links: [
+        { label: "Paper", url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6841222" },
+        { label: "Slides", url: "#" }
+      ]
+    },
+    {
+      title: "The Shapley Value and the Nucleolus of a Two-Sided Platform  Game",
+      status: "Working paper",
+      coauthors: "with Jinglei Huang, Danxia Xie",
       year: "2026",
       abstract: "Briefly describe the project. You can remove this sample item later.",
       links: []
@@ -58,18 +80,34 @@ window.SITE = {
     {
       course: "Intermediate Macroeconomics",
       role: "Teaching Assistant",
-      institution: "Your University",
-      instructor: "Professor Name",
-      term: "Fall 2026",
+      institution: "Institute of Economics, Tsinghua University",
+      instructor: "Danxia Xie",
+      term: "Spring 2024-2025, 2025-2026",
       description: "Led tutorials, graded assignments, held office hours, and assisted with exam preparation."
     },
     {
-      course: "Econometrics",
+      course: "Intermediate Microeconomics",
       role: "Teaching Assistant",
-      institution: "Your University",
-      instructor: "Professor Name",
-      term: "Spring 2026",
-      description: "Prepared review sessions and supported students with empirical exercises."
+      institution: "SEM, Tsinghua University",
+      instructor: "Wei Zhao",
+      term: "Fall, 2025-2026",
+      description: "Led tutorials, assigned homework, held office hours, and drafted exam questions."
+    }, 
+    {
+      course: "The Macroeconomics Behind the Data",
+      role: "Teaching Assistant",
+      institution: "SEM, Tsinghua University",
+      instructor: "Zheng Michael Song",
+      term: "Spring, 2025-2026",
+      description: "Class preparation and course schedule."
+    },
+    {
+      course: "Advanced Macroeconomics Ib",
+      role: "Teaching Assistant",
+      institution: "SEM, Tsinghua University",
+      instructor: "Tuo Chen",
+      term: "Fall, 2026-2027",
+      description: "Led tutorials, graded assignments, held office hours, and assisted with exam preparation."
     }
   ],
 
