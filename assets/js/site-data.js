@@ -1,11 +1,3 @@
-/*
-  Edit this file to change your personal information, research, and teaching records.
-  You do not need to understand JavaScript syntax deeply. Keep the same punctuation:
-  - text goes inside quotation marks
-  - separate list items with commas
-  - keep square brackets [] and curly braces {}
-*/
-
 window.SITE = {
   name: "Shengjie Cai",
   chineseName: "蔡晟杰", 
