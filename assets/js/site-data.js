@@ -34,6 +34,7 @@ window.SITE = {
     {
       title: "A Behavioural Theory of Trade",
       status: "Published paper",
+      journal: "Applied Economics Letters",
       coauthors: "with Jinglei Huang, Danxia Xie",
       year: "2024",
       abstract: "A short paper investigates how creativity preference affects trade both theoretically and empirically.",
