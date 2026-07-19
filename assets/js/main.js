@@ -128,31 +128,113 @@
     setHTML("#home-latest-diary", articleListHTML(latestDiary, true));
   }
 
-  function renderResearch() {
-    if (!$('body[data-page="research"]')) return;
-    setText("#research-page-summary", SITE.researchSummary);
+function renderResearch() {
+  if (!$('body[data-page="research"]')) return;
 
-    const research = SITE.research || [];
-    const html = research.map((item) => {
-      const links = (item.links || [])
-        .map((link) => makeLink(link.label, link.url, "small-link"))
-        .filter(Boolean)
-        .join("");
+  setText("#research-page-summary", SITE.researchSummary);
+
+  const research = SITE.research || [];
+
+  const categories = [
+    {
+      key: "published",
+      title: "Published Journal Articles"
+    },
+    {
+      key: "working",
+      title: "Working Papers"
+    },
+    {
+      key: "progress",
+      title: "Papers in Progress"
+    }
+  ];
+
+  function paperHTML(item) {
+    const links = (item.links || [])
+      .map((link) => makeLink(link.label, link.url, "small-link"))
+      .filter(Boolean)
+      .join("");
+
+    const journal = item.journal
+      ? `
+        <p class="journal">
+          <strong>${escapeHTML(item.journalStatus || "Journal")}:</strong>
+          <em>${escapeHTML(item.journal)}</em>
+        </p>
+      `
+      : "";
+
+    const conferences =
+      item.conferences && item.conferences.length
+        ? `
+          <div class="paper-conferences">
+            <strong>Presented at:</strong>
+            <ul>
+              ${item.conferences
+                .map(
+                  (conference) =>
+                    `<li>${escapeHTML(conference)}</li>`
+                )
+                .join("")}
+            </ul>
+          </div>
+        `
+        : "";
+
+    return `
+      <article class="card paper-card">
+        <div class="eyebrow">
+          ${escapeHTML(item.status || "Research")}
+          ${item.year ? ` · ${escapeHTML(item.year)}` : ""}
+        </div>
+
+        <h3>${escapeHTML(item.title)}</h3>
+
+        ${
+          item.coauthors
+            ? `<p class="muted">${escapeHTML(item.coauthors)}</p>`
+            : ""
+        }
+
+        ${journal}
+
+        <p>${escapeHTML(item.abstract || "")}</p>
+
+        ${conferences}
+
+        ${links ? `<div class="link-row">${links}</div>` : ""}
+      </article>
+    `;
+  }
+
+  const html = categories
+    .map((category) => {
+      const papers = research.filter(
+        (item) => item.category === category.key
+      );
+
+      if (!papers.length) return "";
 
       return `
-        <article class="card paper-card">
-          <div class="eyebrow">${escapeHTML(item.status || "Research")}${item.year ? ` · ${escapeHTML(item.year)}` : ""}</div>
-          <h2>${escapeHTML(item.title)}</h2>
-            ${item.coauthors ? `<p class="muted">${escapeHTML(item.coauthors)}</p>` : ""}
-            ${item.journal ? `<p class="journal"><strong>Published in:</strong> <em>${escapeHTML(item.journal)}</em></p>` : ""}
-          <p>${escapeHTML(item.abstract || "")}</p>
-          ${links ? `<div class="link-row">${links}</div>` : ""}
-        </article>
-      `;
-    }).join("");
+        <section class="research-group"
+                 aria-labelledby="research-${category.key}">
+          <h2 id="research-${category.key}"
+              class="research-group-title">
+            ${category.title}
+          </h2>
 
-    setHTML("#research-list", html || `<p class="muted">No research items yet.</p>`);
-  }
+          ${papers.map(paperHTML).join("")}
+        </section>
+      `;
+    })
+    .join("");
+
+  setHTML(
+    "#research-list",
+    html || `<p class="muted">No research items yet.</p>`
+  );
+}
 
   function renderTeaching() {
     if (!$('body[data-page="teaching"]')) return;
