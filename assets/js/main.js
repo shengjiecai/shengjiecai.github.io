@@ -147,9 +147,23 @@ function renderResearch() {
     },
     {
       key: "progress",
-      title: "Papers in Progress"
+      title: "Work in Progress"
     }
   ];
+
+  function coauthorsHTML(coauthors) {
+    if (!coauthors) return "";
+    if (!Array.isArray(coauthors)) return escapeHTML(coauthors);
+
+    const names = coauthors.map((coauthor) => {
+      if (typeof coauthor === "string") return escapeHTML(coauthor);
+      return coauthor.url
+        ? makeLink(coauthor.name, coauthor.url, "coauthor-link")
+        : escapeHTML(coauthor.name);
+    });
+
+    return `with ${names.join(", ")}`;
+  }
 
   function paperHTML(item) {
     const links = (item.links || [])
@@ -194,13 +208,13 @@ function renderResearch() {
 
         ${
           item.coauthors
-            ? `<p class="muted">${escapeHTML(item.coauthors)}</p>`
+            ? `<p class="paper-coauthors">${coauthorsHTML(item.coauthors)}</p>`
             : ""
         }
 
         ${journal}
 
-        <p>${escapeHTML(item.abstract || "")}</p>
+        <p class="paper-abstract">${escapeHTML(item.abstract || "")}</p>
 
         ${conferences}
 
@@ -246,9 +260,9 @@ function renderResearch() {
       <article class="card teaching-card">
         <div class="eyebrow">${escapeHTML(item.term || "")}</div>
         <h2>${escapeHTML(item.course)}</h2>
-        <p class="muted">${escapeHTML(item.role || "Teaching Assistant")}${item.institution ? ` · ${escapeHTML(item.institution)}` : ""}</p>
-        ${item.instructor ? `<p><strong>Instructor:</strong> ${escapeHTML(item.instructor)}</p>` : ""}
-        <p>${escapeHTML(item.description || "")}</p>
+        <p class="teaching-meta">${escapeHTML(item.role || "Teaching Assistant")}${item.institution ? ` · ${escapeHTML(item.institution)}` : ""}</p>
+        ${item.instructor ? `<p class="teaching-instructor"><strong>Instructor:</strong> ${escapeHTML(item.instructor)}</p>` : ""}
+        <p class="teaching-description">${escapeHTML(item.description || "")}</p>
       </article>
     `).join("");
 

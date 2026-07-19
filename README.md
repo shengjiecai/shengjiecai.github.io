@@ -155,14 +155,16 @@ Because the article page loads Markdown files, do not preview by double-clicking
 Open Command Prompt in the website folder and run:
 
 ```bash
-py -m http.server 8000
+python -m http.server 8000 --bind 127.0.0.1
 ```
 
 Then open:
 
 ```text
-http://localhost:8000/
+http://127.0.0.1:8000/
 ```
+
+Press `Ctrl+C` in Command Prompt when you are finished previewing the site.
 
 ### macOS or Linux
 

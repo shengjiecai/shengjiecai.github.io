@@ -4,12 +4,16 @@
   --surface-2: #f8f8f8;
   --text: #1f1f1f;
   --muted: #666666;
+  --muted-light: #808080;
   --line: #dddddd;
   --accent: #003366;
   --accent-2: #00509e;
   --shadow: none;
   --radius: 2px;
   --max: 1050px;
+  --page-heading-size: clamp(1.8rem, 4vw, 3rem);
+  --page-heading-margin: clamp(1.2rem, 2.68vw, 2rem);
+  --profile-extra-offset: 1rem;
 }
 
 * {
@@ -18,6 +22,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -107,10 +113,20 @@ main.container {
   align-items: start;
 }
 
-.hero-text h1 {
-  font-size: clamp(1.8rem, 4vw, 3rem);
+.hero-text > h1,
+.page-title > h1,
+.page-heading {
+  display: block;
+  width: 100%;
+  padding: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: var(--page-heading-size);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: var(--page-heading-margin) 0;
+  letter-spacing: normal;
 }
-.page-title h1,
+
 .article-full h1 {
   font-size: clamp(2rem, 4vw, 3.4rem);
   line-height: 1.04;
@@ -143,7 +159,10 @@ main.container {
 }
 
 .profile-card {
-  padding: 18px;
+  margin-top: calc(var(--page-heading-margin) + var(--profile-extra-offset));
+  padding: 0 18px 18px;
+  border: 0;
+  background: transparent;
 }
 
 .profile-card img {
@@ -354,6 +373,7 @@ main.container {
 
   .profile-card {
     max-width: 360px;
+    margin-top: 20px;
   }
 }
 
@@ -363,6 +383,9 @@ main.container {
 }
 
 .research-group-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   margin: 0 0 18px;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--line);
@@ -370,18 +393,55 @@ main.container {
   line-height: 1.25;
 }
 
-.paper-card h3 {
-  margin: 0 0 8px;
+.research-group-title::before {
+  content: "";
+  width: 0.52rem;
+  height: 0.52rem;
+  flex: 0 0 0.52rem;
+  background: var(--accent-2);
+}
+
+.paper-card,
+.teaching-card {
+  padding: 26px 28px 28px;
+}
+
+.paper-card .eyebrow,
+.teaching-card .eyebrow {
+  margin-bottom: 6px;
+}
+
+.paper-card h3,
+.teaching-card h2 {
+  margin: 0 0 6px;
   font-size: 1.35rem;
   line-height: 1.3;
 }
 
-.journal {
-  margin: 6px 0;
+.paper-coauthors,
+.teaching-meta {
+  margin: 0 0 14px;
+  color: var(--muted);
+}
+
+.coauthor-link {
+  color: inherit;
+}
+
+.journal,
+.teaching-instructor {
+  margin: 0;
+}
+
+.paper-abstract,
+.teaching-description {
+  margin: 16px 0 0;
+  color: var(--muted-light);
+  line-height: 1.72;
 }
 
 .paper-conferences {
-  margin-top: 14px;
+  margin-top: 18px;
 }
 
 .paper-conferences ul {

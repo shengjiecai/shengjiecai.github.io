@@ -1,9 +1,9 @@
 window.SITE = {
   name: "Shengjie Cai",
   chineseName: "蔡晟杰", 
-  currentPosition: "Ph.D. Student in Economics",
-  affiliation: "Insitute of Economics, Tsinghua University",
-  location: "Beijing China",
+  currentPosition: "Ph.D. Candidate in Economics",
+  affiliation: "Institute of Economics, Tsinghua University",
+  location: "Beijing, China",
   profileImage: "assets/img/photo.jpg",
   cvUrl: "assets/files/cv.pdf",
 
@@ -16,11 +16,11 @@ window.SITE = {
   },
 
   introduction: [
-    "I am a Ph.D. candidate in economics in Tsinghua . My research interests include growth, network economics, and digital economics.",
-    "Before the Ph.D. career, I majored in Mathematics and Applied Mathematics at Tsinghua University, with a minor in Economics and Finance."
+    "I am a Ph.D. candidate in Economics at Tsinghua University. My research interests include economic growth, network economics, and the digital economy.",
+    "Before beginning my doctoral studies, I majored in Mathematics and Applied Mathematics at Tsinghua University and completed a minor in Economics and Finance."
   ],
 
-  researchSummary: "My research interests are currently centered on growth, network economics, and digital economics.",
+  researchSummary: "My research focuses on economic growth, network economics, and the digital economy.",
 
   research: [
     {
@@ -29,9 +29,12 @@ window.SITE = {
       status: "Published paper",
       journal: "Applied Economics Letters",
       journalStatus: "Published in",
-      coauthors: "with Jinglei Huang, Danxia Xie",
+      coauthors: [
+        { name: "Jinglei Huang", url: "https://huangjinglei.wordpress.com/" },
+        { name: "Danxia Xie", url: "https://sites.google.com/site/xiedanxia/" }
+      ],
       year: "2024",
-      abstract: "A short paper investigates how creativity preference affects trade both theoretically and empirically.",
+      abstract: "This paper investigates how preferences for creativity affect trade through theoretical and empirical analyses.",
       links: [
         { label: "Paper", url: "https://www.tandfonline.com/doi/full/10.1080/13504851.2024.2418589" },
         { label: "Slides", url: "#" }
@@ -40,11 +43,16 @@ window.SITE = {
     {
       title: "Computing Power Infrastructure, Collaboration between Computing and Networks, and Regional Economic Growth",
       category: "working",
+      status: "Working paper",
       journal: "Management World (管理世界)",
       journalStatus: "Under review at",
-      coauthors: "with Jinglei Huang, Danxia Xie, Rouhan Yin",
+      coauthors: [
+        { name: "Jinglei Huang", url: "https://huangjinglei.wordpress.com/" },
+        { name: "Danxia Xie", url: "https://sites.google.com/site/xiedanxia/" },
+        { name: "Rouhan Yin" }
+      ],
       year: "2026",
-      abstract: "The article examines how data and computing power infrastructure synergistically influence local and regional economic growth.",
+      abstract: "This paper examines how computing-power infrastructure and coordination between computing and network resources jointly affect local and regional economic growth.",
       conferences: [
         "AEA, 2026",
         "AOM, 2026"
@@ -58,21 +66,34 @@ window.SITE = {
       title: "Algorithm in the AI and Digital Economy",
       category: "working",
       status: "Working paper",
-      coauthors: "with Danxia Xie",
+      coauthors: [
+        { name: "Danxia Xie", url: "https://sites.google.com/site/xiedanxia/" }
+      ],
       year: "2026",
-      abstract: "The paper construct algorithm-driven growth based on foundamentals of computer science.",
+      abstract: "This paper develops a theory of algorithm-driven growth grounded in the fundamentals of computer science.",
       links: [
         { label: "Paper", url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6841222" },
         { label: "Slides", url: "#" }
       ]
     },
     {
-      title: "The Shapley Value and the Nucleolus of a Two-Sided Platform  Game",
+      title: "The Shapley Value and the Nucleolus of a Two-Sided Platform Game",
       category: "working",
       status: "Working paper",
-      coauthors: "with Jinglei Huang, Danxia Xie",
+      coauthors: [
+        { name: "Jinglei Huang", url: "https://huangjinglei.wordpress.com/" },
+        { name: "Danxia Xie", url: "https://sites.google.com/site/xiedanxia/" }
+      ],
       year: "2026",
-      abstract: "Briefly describe the project. You can remove this sample item later.",
+      abstract: "This paper analyzes a broad class of platform problems from a cooperative game-theoretic perspective.",
+      links: []
+    },
+    {
+      title: "The Task Bundling",
+      category: "progress",
+      status: "Work in progress",
+      year: "2026",
+      abstract: "The paper aims to establish a general theory of growth through recursive task encapsulation, with AI agents as the leading contemporary application.",
       links: []
     }
   ],
@@ -85,36 +106,36 @@ window.SITE = {
       role: "Teaching Assistant",
       institution: "Institute of Economics, Tsinghua University",
       instructor: "Danxia Xie",
-      term: "Spring 2024-2025, 2025-2026",
+      term: "Spring 2024–2025 and 2025–2026",
       description: "Led tutorials, graded assignments, held office hours, and assisted with exam preparation."
     },
     {
       course: "Intermediate Microeconomics",
       role: "Teaching Assistant",
-      institution: "SEM, Tsinghua University",
+      institution: "School of Economics and Management, Tsinghua University",
       instructor: "Wei Zhao",
-      term: "Fall, 2025-2026",
-      description: "Led tutorials, assigned homework, held office hours, and drafted exam questions."
+      term: "Fall 2025–2026",
+      description: "Led tutorials, prepared homework assignments, held office hours, and drafted exam questions."
     }, 
     {
       course: "The Macroeconomics Behind the Data",
       role: "Teaching Assistant",
-      institution: "SEM, Tsinghua University",
+      institution: "School of Economics and Management, Tsinghua University",
       instructor: "Zheng Michael Song",
-      term: "Spring, 2025-2026",
-      description: "Class preparation and course schedule."
+      term: "Spring 2025–2026",
+      description: "Prepared course materials and coordinated the course schedule."
     },
     {
       course: "Advanced Macroeconomics Ib",
       role: "Teaching Assistant",
-      institution: "SEM, Tsinghua University",
+      institution: "School of Economics and Management, Tsinghua University",
       instructor: "Tuo Chen",
-      term: "Fall, 2026-2027",
+      term: "Fall 2026–2027",
       description: "Led tutorials, graded assignments, held office hours, and assisted with exam preparation."
     }
   ],
 
-  personalSummary: "Personal Space is for non-research writing: reading notes, short essays, and diary-style reflections. You can keep this section public, or later make selected pages private by not publishing them.",
+  personalSummary: "A (maybe) secret garden.",
 
-  footerNote: "© Shengjie Cai. Last updated Jul 10, 2026."
+  footerNote: "© Shengjie Cai. Last updated July 19, 2026."
 };
