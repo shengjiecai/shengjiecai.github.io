@@ -25,6 +25,7 @@ window.SITE = {
   research: [
     {
       title: "A Behavioural Theory of Trade",
+      category: "published",
       status: "Published paper",
       journal: "Applied Economics Letters",
       journalStatus: "Published in",
@@ -38,6 +39,7 @@ window.SITE = {
     },
     {
       title: "Computing Power Infrastructure, Collaboration between Computing and Networks, and Regional Economic Growth",
+      category: "working",
       journal: "Management World (管理世界)",
       journalStatus: "Under review at",
       coauthors: "with Jinglei Huang, Danxia Xie, Rouhan Yin",
@@ -54,6 +56,7 @@ window.SITE = {
     },
     {
       title: "Algorithm in the AI and Digital Economy",
+      category: "working",
       status: "Working paper",
       coauthors: "with Danxia Xie",
       year: "2026",
@@ -65,6 +68,7 @@ window.SITE = {
     },
     {
       title: "The Shapley Value and the Nucleolus of a Two-Sided Platform  Game",
+      category: "working",
       status: "Working paper",
       coauthors: "with Jinglei Huang, Danxia Xie",
       year: "2026",

@@ -65,6 +65,7 @@
       const href = a.getAttribute("href");
       if (href === current || (current === "article.html" && href === "personal.html")) {
         a.classList.add("active");
+        a.setAttribute("aria-current", "page");
       }
     });
   }
@@ -275,8 +276,16 @@ function renderResearch() {
     setHTML("#diary-list", articleListHTML(diary));
   }
 
-  function simpleMarkdownToHTML(markdown) {
+  function simpleMarkdownToHTML(markdown, articleTitle = "") {
     const lines = markdown.replace(/\r\n/g, "\n").split("\n");
+    const firstContentLine = lines.findIndex((rawLine) => rawLine.trim() !== "");
+    if (
+      firstContentLine >= 0 &&
+      lines[firstContentLine].trim().startsWith("# ") &&
+      lines[firstContentLine].trim().slice(2).trim() === articleTitle.trim()
+    ) {
+      lines.splice(firstContentLine, 1);
+    }
     let html = "";
     let paragraph = [];
     let inList = false;
@@ -322,7 +331,7 @@ function renderResearch() {
       } else if (line.startsWith("# ")) {
         flushParagraph();
         closeList();
-        html += `<h1>${inline(line.slice(2))}</h1>`;
+        html += `<h2>${inline(line.slice(2))}</h2>`;
       } else if (line.startsWith("- ")) {
         flushParagraph();
         if (!inList) {
@@ -374,7 +383,7 @@ function renderResearch() {
       const response = await fetch(article.file);
       if (!response.ok) throw new Error("File not found");
       const markdown = await response.text();
-      setHTML("#article-body", simpleMarkdownToHTML(markdown));
+      setHTML("#article-body", simpleMarkdownToHTML(markdown, article.title));
     } catch (error) {
       setHTML("#article-body", `
         <p>This article could not be loaded.</p>
