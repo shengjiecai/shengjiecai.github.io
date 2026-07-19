@@ -27,6 +27,7 @@ window.SITE = {
       title: "A Behavioural Theory of Trade",
       status: "Published paper",
       journal: "Applied Economics Letters",
+      journalStatus: "Published in",
       coauthors: "with Jinglei Huang, Danxia Xie",
       year: "2024",
       abstract: "A short paper investigates how creativity preference affects trade both theoretically and empirically.",
@@ -37,10 +38,15 @@ window.SITE = {
     },
     {
       title: "Computing Power Infrastructure, Collaboration between Computing and Networks, and Regional Economic Growth",
-      status: "Working paper, under review",
+      journal: "Management World (管理世界)",
+      journalStatus: "Under review at",
       coauthors: "with Jinglei Huang, Danxia Xie, Rouhan Yin",
       year: "2026",
       abstract: "The article examines how data and computing power infrastructure synergistically influence local and regional economic growth.",
+      conferences: [
+        "AEA, 2026",
+        "AOM, 2026"
+      ],
       links: [
         { label: "Paper", url: "#" },
         { label: "Slides", url: "#" }
