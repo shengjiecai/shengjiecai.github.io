@@ -4,7 +4,7 @@ window.SITE = {
   currentPosition: "Ph.D. Student in Economics",
   affiliation: "Insitute of Economics, Tsinghua University",
   location: "Beijing China",
-  profileImage: "assets/img/profile-placeholder.svg",
+  profileImage: "assets/img/photo.jpg",
   cvUrl: "assets/files/cv.pdf",
 
   contact: {
