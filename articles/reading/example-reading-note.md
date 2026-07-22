@@ -2,6 +2,10 @@
 
 This is a sample reading note. Replace this file with your own reading notes.
 
+![A quiet study desk illustrating an article-specific image](../../assets/img/Reading_20260710_example-reading-note/study-desk.png "Example image stored with this reading note")
+
+The image above belongs only to this article. It is stored in `assets/img/Reading_20260710_example-reading-note/`. For diary entries, use the corresponding convention `assets/img/Diary_YYYYMMDD_article-slug/`.
+
 ## Bibliographic information
 
 - Author: Author Name

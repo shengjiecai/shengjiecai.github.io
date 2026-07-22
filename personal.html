@@ -1,13 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="personal-space-document">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Personal Space | Personal Academic Website</title>
   <meta name="description" content="Reading notes and diary entries.">
-  <link rel="stylesheet" href="assets/css/style.css?v=20260719-1">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260722-4">
 </head>
-<body data-page="personal">
+<body data-page="personal" data-background="assets/img/personal-space-background.png" data-background-opacity="0.72">
   <header class="site-header">
     <div class="header-inner">
       <a class="site-title" href="index.html">Personal Academic Website</a>
@@ -15,26 +16,26 @@
     </div>
   </header>
 
-  <main class="container">
-    <section class="page-title">
-      <h1>Personal Space</h1>
-      <p id="personal-page-summary"></p>
-    </section>
-
-    <section class="two-column" aria-label="Personal writing lists">
+  <main class="personal-page">
+    <section class="personal-content" aria-labelledby="personal-space-title">
       <div>
-        <div class="section-heading">
-          <h2>Reading</h2>
-        </div>
-        <div id="reading-list" class="article-list"></div>
+        <h1 id="personal-space-title" class="page-heading">Personal Space</h1>
+        <p id="personal-page-summary" class="personal-hero-summary"></p>
       </div>
 
-      <div>
-        <div class="section-heading">
-          <h2>Diary</h2>
-        </div>
-        <div id="diary-list" class="article-list"></div>
-      </div>
+      <nav class="personal-entry-grid" aria-label="Personal Space collections">
+        <a class="personal-entry-link" href="reading.html">
+          <span class="eyebrow">Collection</span>
+          <strong>Reading</strong>
+          <span class="personal-entry-description">Reading notes and reflections on books and papers.</span>
+        </a>
+
+        <a class="personal-entry-link" href="diary.html">
+          <span class="eyebrow">Collection</span>
+          <strong>Diary</strong>
+          <span class="personal-entry-description">Personal observations and occasional journal entries.</span>
+        </a>
+      </nav>
     </section>
   </main>
 
@@ -46,6 +47,6 @@
 
   <script src="assets/js/site-data.js"></script>
   <script src="articles/articles.js"></script>
-  <script src="assets/js/main.js?v=20260719-1"></script>
+  <script src="assets/js/main.js?v=20260722-4"></script>
 </body>
 </html>

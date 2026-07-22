@@ -2,9 +2,12 @@
   Add your reading notes and diary entries here.
 
   Steps for a new article:
-  1. Create a .md file in articles/reading/ or articles/diary/.
-  2. Add one item below with the same file path.
-  3. Keep slug unique; it becomes part of the article URL.
+  1. Give the article its own folder in articles/reading/ or articles/diary/.
+  2. Put the article in index.md.
+  3. Store its images in assets/img/Reading_YYYYMMDD_article-slug/ or
+     assets/img/Diary_YYYYMMDD_article-slug/ so every article has one image folder.
+  4. Add one item below with the index.md path.
+  5. Keep slug unique; it becomes part of the article URL.
 */
 
 window.ARTICLES = [
