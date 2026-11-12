@@ -12,6 +12,15 @@
 
 window.ARTICLES = [
   {
+    slug: "20261105-chengdu",
+    type: "diary",
+    title: "20261105成都之行",
+    date: "2026-11-05",
+    tags: ["Diary", "成都"],
+    summary: "成都之行的影像记录：食，按店收录；行，依照片顺序展开。",
+    file: "articles/diary/20261105成都之行.md"
+  },
+  {
     slug: "example-reading-note",
     type: "reading",
     title: "Example Reading Note: How to Write a Research Summary",

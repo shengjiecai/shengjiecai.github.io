@@ -488,7 +488,7 @@ function renderResearch() {
     const collectionPage = article.type === "reading" ? "reading.html" : "diary.html";
     const collectionLabel = article.type === "reading" ? "Reading" : "Diary";
     setHTML("#article-container", `
-      <article class="card article-full">
+      <article class="card article-full" data-article-type="${escapeHTML(article.type)}">
         <a class="back-link" href="${collectionPage}">← Back to ${collectionLabel}</a>
         <div class="eyebrow">${article.type === "reading" ? "Reading" : "Diary"} · ${formatDate(article.date)}${article.tags && article.tags.length ? ` · ${article.tags.map(escapeHTML).join(", ")}` : ""}</div>
         <h1>${escapeHTML(article.title)}</h1>
