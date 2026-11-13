@@ -14,7 +14,7 @@ window.ARTICLES = [
   {
     slug: "20261105-chengdu",
     type: "diary",
-    title: "20261105成都之行",
+    title: "20261105 成都之行",
     date: "2026-11-05",
     tags: ["Diary", "成都"],
     summary: "成都之行的影像记录：食，按店收录；行，依照片顺序展开。",
@@ -37,5 +37,14 @@ window.ARTICLES = [
     tags: ["Diary"],
     summary: "A sample diary entry. Replace it with your own writing or delete it later.",
     file: "articles/diary/example-diary-entry.md"
+  },
+  {
+    slug: "20211122-xiaoxue",
+    type: "diary",
+    title: "20211122 小雪",
+    date: "2021-11-22",
+    tags: ["随笔"],
+    summary: "一篇写于小雪时节的旧文，记雪夜、诗句，以及最初想写点东西的心情。",
+    file: "articles/diary/20211122 小雪.md"
   }
 ];

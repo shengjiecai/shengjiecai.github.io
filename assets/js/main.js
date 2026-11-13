@@ -388,6 +388,7 @@ function renderResearch() {
     let html = "";
     let paragraph = [];
     let inList = false;
+    let quoteLines = [];
 
     function inline(text) {
       return escapeHTML(text)
@@ -411,8 +412,22 @@ function renderResearch() {
       }
     }
 
+    function flushQuote() {
+      if (quoteLines.length) {
+        html += `<blockquote>${simpleMarkdownToHTML(quoteLines.join("\n"), "", articleFile)}</blockquote>`;
+        quoteLines = [];
+      }
+    }
+
     lines.forEach((rawLine) => {
       const line = rawLine.trim();
+      if (/^>(?:\s|$)/.test(line)) {
+        flushParagraph();
+        closeList();
+        quoteLines.push(line.replace(/^> ?/, ""));
+        return;
+      }
+      flushQuote();
       if (!line) {
         flushParagraph();
         closeList();
@@ -454,10 +469,6 @@ function renderResearch() {
           inList = true;
         }
         html += `<li>${inline(line.slice(2))}</li>`;
-      } else if (line.startsWith("> ")) {
-        flushParagraph();
-        closeList();
-        html += `<blockquote>${inline(line.slice(2))}</blockquote>`;
       } else {
         paragraph.push(line);
       }
@@ -465,6 +476,7 @@ function renderResearch() {
 
     flushParagraph();
     closeList();
+    flushQuote();
     return html;
   }
 
