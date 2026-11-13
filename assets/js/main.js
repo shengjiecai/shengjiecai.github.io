@@ -276,6 +276,9 @@ function renderResearch() {
     if (!$('body[data-page="personal"]')) return;
     setText("#personal-page-summary", SITE.personalSummary);
     applyPersonalContrast();
+    if (window.matchMedia) {
+      window.matchMedia("(orientation: portrait)").addEventListener("change", applyPersonalContrast);
+    }
   }
 
   function relativeLuminance(red, green, blue) {
@@ -299,7 +302,8 @@ function renderResearch() {
     const page = $('body[data-page="personal"]');
     if (!page || typeof Image === "undefined" || !document.createElement) return;
 
-    const backgroundPath = page.dataset.background;
+    const usePortrait = window.matchMedia && window.matchMedia("(orientation: portrait)").matches;
+    const backgroundPath = (usePortrait && page.dataset.backgroundPortrait) || page.dataset.background;
     if (!backgroundPath) return;
 
     const opacityValue = Number(page.dataset.backgroundOpacity);
@@ -310,7 +314,9 @@ function renderResearch() {
 
     const image = new Image();
     image.decoding = "async";
+    page.dataset.contrastBackground = backgroundPath;
     image.onload = () => {
+      if (page.dataset.contrastBackground !== backgroundPath) return;
       try {
         const canvas = document.createElement("canvas");
         canvas.width = 48;
@@ -318,30 +324,48 @@ function renderResearch() {
         const context = canvas.getContext("2d", { willReadFrequently: true });
         if (!context) return;
 
-        context.drawImage(image, 0, 0, canvas.width, canvas.height);
-        const sampleWidth = Math.round(canvas.width * 0.64);
-        const pixels = context.getImageData(0, 0, sampleWidth, canvas.height).data;
-        let imageLuminance = 0;
-        let sampleCount = 0;
-
-        for (let index = 0; index < pixels.length; index += 4) {
-          imageLuminance += relativeLuminance(pixels[index], pixels[index + 1], pixels[index + 2]);
-          sampleCount += 1;
-        }
-
-        imageLuminance /= Math.max(sampleCount, 1);
+        // Sample the area behind the heading and summary, including cover cropping.
+        const heading = page.querySelector(".page-heading").getBoundingClientRect();
+        const summary = page.querySelector("#personal-page-summary").getBoundingClientRect();
+        const viewportWidth = document.documentElement.clientWidth;
+        const viewportHeight = window.innerHeight;
+        const scale = Math.max(viewportWidth / image.naturalWidth, viewportHeight / image.naturalHeight);
+        const offsetX = (viewportWidth - image.naturalWidth * scale) / 2;
+        const offsetY = (viewportHeight - image.naturalHeight * scale) / 2;
         const baseLuminance = relativeLuminance(43, 35, 34);
-        const effectiveLuminance = (imageLuminance * backgroundOpacity) + (baseLuminance * (1 - backgroundOpacity));
         const lightLuminance = relativeLuminance(255, 255, 255);
         const darkLuminance = relativeLuminance(31, 24, 25);
-        const useLightText = contrastRatio(lightLuminance, effectiveLuminance) >= contrastRatio(darkLuminance, effectiveLuminance);
+
+        function prefersLightText(rect) {
+          context.drawImage(
+            image,
+            (rect.left - offsetX) / scale, (rect.top - offsetY) / scale,
+            rect.width / scale, rect.height / scale,
+            0, 0, canvas.width, canvas.height
+          );
+          const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+          let imageLuminance = 0;
+          for (let index = 0; index < pixels.length; index += 4) {
+            imageLuminance += relativeLuminance(pixels[index], pixels[index + 1], pixels[index + 2]);
+          }
+          imageLuminance /= Math.max(pixels.length / 4, 1);
+          const effectiveLuminance = (imageLuminance * backgroundOpacity) + (baseLuminance * (1 - backgroundOpacity));
+          return contrastRatio(lightLuminance, effectiveLuminance) >= contrastRatio(darkLuminance, effectiveLuminance);
+        }
+
+        const useLightText = prefersLightText(heading);
+        const useLightMuted = prefersLightText(summary);
 
         page.style.setProperty("--personal-text", useLightText ? "#ffffff" : "#1f1819");
-        page.style.setProperty("--personal-muted", useLightText ? "#f0e9e7" : "#423638");
-        page.style.setProperty("--personal-line", useLightText ? "rgba(255, 255, 255, 0.28)" : "rgba(31, 24, 25, 0.28)");
+        page.style.setProperty("--personal-muted", useLightMuted ? "#f0e9e7" : "#423638");
+        page.style.setProperty("--personal-line", useLightMuted ? "rgba(255, 255, 255, 0.28)" : "rgba(31, 24, 25, 0.28)");
         page.style.setProperty(
           "--personal-text-shadow",
           useLightText ? "0 1px 5px rgba(0, 0, 0, 0.65)" : "0 1px 4px rgba(255, 255, 255, 0.55)"
+        );
+        page.style.setProperty(
+          "--personal-muted-shadow",
+          useLightMuted ? "0 1px 5px rgba(0, 0, 0, 0.65)" : "0 1px 4px rgba(255, 255, 255, 0.55)"
         );
       } catch (error) {
         // Retain the accessible light-text fallback if the image cannot be sampled.
@@ -366,118 +390,8 @@ function renderResearch() {
     setHTML("#writing-list", html || `<p class="muted">No articles yet.</p>`);
   }
 
-  function resolveArticleAssetUrl(assetUrl, articleFile) {
-    try {
-      const articleUrl = new URL(articleFile, window.location.href);
-      return new URL(assetUrl, articleUrl).href;
-    } catch (error) {
-      return assetUrl;
-    }
-  }
-
   function simpleMarkdownToHTML(markdown, articleTitle = "", articleFile = "") {
-    const lines = markdown.replace(/\r\n/g, "\n").split("\n");
-    const firstContentLine = lines.findIndex((rawLine) => rawLine.trim() !== "");
-    if (
-      firstContentLine >= 0 &&
-      lines[firstContentLine].trim().startsWith("# ") &&
-      lines[firstContentLine].trim().slice(2).trim() === articleTitle.trim()
-    ) {
-      lines.splice(firstContentLine, 1);
-    }
-    let html = "";
-    let paragraph = [];
-    let inList = false;
-    let quoteLines = [];
-
-    function inline(text) {
-      return escapeHTML(text)
-        .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-        .replace(/\*(.+?)\*/g, "<em>$1</em>")
-        .replace(/`(.+?)`/g, "<code>$1</code>")
-        .replace(/\[([^\]]+)\]\(([^\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
-    }
-
-    function flushParagraph() {
-      if (paragraph.length) {
-        html += `<p>${inline(paragraph.join(" "))}</p>`;
-        paragraph = [];
-      }
-    }
-
-    function closeList() {
-      if (inList) {
-        html += "</ul>";
-        inList = false;
-      }
-    }
-
-    function flushQuote() {
-      if (quoteLines.length) {
-        html += `<blockquote>${simpleMarkdownToHTML(quoteLines.join("\n"), "", articleFile)}</blockquote>`;
-        quoteLines = [];
-      }
-    }
-
-    lines.forEach((rawLine) => {
-      const line = rawLine.trim();
-      if (/^>(?:\s|$)/.test(line)) {
-        flushParagraph();
-        closeList();
-        quoteLines.push(line.replace(/^> ?/, ""));
-        return;
-      }
-      flushQuote();
-      if (!line) {
-        flushParagraph();
-        closeList();
-        return;
-      }
-
-      const imageMatch = line.match(/^!\[([^\]]*)\]\((\S+?)(?:\s+"([^"]*)")?\)$/);
-      if (imageMatch) {
-        flushParagraph();
-        closeList();
-        const alt = imageMatch[1];
-        const imageUrl = resolveArticleAssetUrl(imageMatch[2], articleFile);
-        const caption = imageMatch[3] || alt;
-        html += `
-          <figure class="article-figure">
-            <img src="${escapeHTML(imageUrl)}" alt="${escapeHTML(alt)}" loading="lazy">
-            ${caption ? `<figcaption>${escapeHTML(caption)}</figcaption>` : ""}
-          </figure>
-        `;
-        return;
-      }
-
-      if (line.startsWith("### ")) {
-        flushParagraph();
-        closeList();
-        html += `<h3>${inline(line.slice(4))}</h3>`;
-      } else if (line.startsWith("## ")) {
-        flushParagraph();
-        closeList();
-        html += `<h2>${inline(line.slice(3))}</h2>`;
-      } else if (line.startsWith("# ")) {
-        flushParagraph();
-        closeList();
-        html += `<h2>${inline(line.slice(2))}</h2>`;
-      } else if (line.startsWith("- ")) {
-        flushParagraph();
-        if (!inList) {
-          html += "<ul>";
-          inList = true;
-        }
-        html += `<li>${inline(line.slice(2))}</li>`;
-      } else {
-        paragraph.push(line);
-      }
-    });
-
-    flushParagraph();
-    closeList();
-    flushQuote();
-    return html;
+    return window.ArticleMarkdown.render(markdown, { title: articleTitle, file: articleFile });
   }
 
   async function renderArticle() {

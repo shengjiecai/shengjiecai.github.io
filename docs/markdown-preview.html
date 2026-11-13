@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Markdown formatting examples</title>
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261113-3">
+</head>
+<body data-page="article">
+  <main class="container">
+    <article class="card article-full" data-article-type="reading">
+      <a class="back-link" href="markdown-guide.md">Markdown formatting guide</a>
+      <h1>Markdown formatting examples</h1>
+      <div id="article-body" class="markdown-body"></div>
+    </article>
+  </main>
+  <script src="../assets/vendor/markdown-it/markdown-it.min.js?v=15.0.3"></script>
+  <script src="../assets/js/markdown.js?v=20261113-3"></script>
+  <script>
+    (async function () {
+      const body = document.getElementById("article-body");
+      try {
+        const response = await fetch("markdown-examples.md");
+        if (!response.ok) throw new Error("Example file could not be loaded");
+        body.innerHTML = window.ArticleMarkdown.render(await response.text(), {
+          title: "Markdown formatting examples",
+          file: "markdown-examples.md"
+        });
+      } catch (error) {
+        body.textContent = "Open this example through a local web server to display the Markdown formatting.";
+      }
+    })();
+  </script>
+</body>
+</html>

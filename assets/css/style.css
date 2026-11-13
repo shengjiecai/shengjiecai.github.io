@@ -294,8 +294,14 @@ body[data-page="personal"]::before {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: url("../img/personal-space-background.png") center / cover no-repeat;
+  background: url("../img/personal-space-background.png?v=20261113-2") center / cover no-repeat;
   opacity: var(--personal-bg-opacity);
+}
+
+@media (orientation: portrait) {
+  body[data-page="personal"]::before {
+    background-image: url("../img/personal-space-background-portrait.webp?v=20261113-2");
+  }
 }
 
 body[data-page="personal"] .site-footer {
@@ -303,7 +309,7 @@ body[data-page="personal"] .site-footer {
   z-index: 1;
   color: var(--personal-muted);
   border-color: var(--personal-line);
-  text-shadow: var(--personal-text-shadow);
+  text-shadow: var(--personal-muted-shadow, var(--personal-text-shadow));
 }
 
 .personal-content .page-heading {
@@ -318,7 +324,7 @@ body[data-page="personal"] .site-footer {
   margin: 0;
   color: var(--personal-muted);
   font-size: 1.08rem;
-  text-shadow: var(--personal-text-shadow);
+  text-shadow: var(--personal-muted-shadow, var(--personal-text-shadow));
 }
 
 .personal-entry-grid {
@@ -448,19 +454,77 @@ body[data-page="personal"] .site-footer {
 }
 
 .article-full {
-  max-width: 860px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 .markdown-body {
   font-size: 1.06rem;
+  overflow-wrap: anywhere;
 }
 
-.markdown-body h1,
-.markdown-body h2,
-.markdown-body h3 {
+.markdown-body :is(h1, h2, h3, h4, h5, h6) {
   line-height: 1.25;
   margin-top: 1.8em;
+}
+
+.markdown-body .text-center {
+  text-align: center;
+}
+
+.markdown-spacer {
+  height: 1.65em;
+  pointer-events: none;
+}
+
+.markdown-body hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2em 0;
+}
+
+.markdown-body pre {
+  overflow-x: auto;
+  padding: 16px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 0.9em;
+}
+
+.markdown-body pre code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  white-space: pre;
+  overflow-wrap: normal;
+}
+
+.markdown-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 1.4em 0;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.markdown-body th,
+.markdown-body td {
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.markdown-body th {
+  background: var(--surface-2);
+}
+
+.markdown-body img {
+  max-width: 100%;
+  height: auto;
 }
 
 .markdown-body blockquote {

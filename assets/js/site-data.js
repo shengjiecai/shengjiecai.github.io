@@ -20,7 +20,7 @@ window.SITE = {
     "Before beginning my doctoral studies, I majored in Mathematics and Applied Mathematics at Tsinghua University and completed a minor in Economics and Finance."
   ],
 
-  researchSummary: "My research focuses on economic growth, network economics, and the digital economy.",
+  researchSummary: "My research focuses on economic growth, network economics, and the digital economy. Recently, I am primarily working on algorithm in the economy.",
 
   research: [
     {
@@ -89,7 +89,7 @@ window.SITE = {
       links: []
     },
     {
-      title: "The Task Bundling",
+      title: " Recursive Production and the Coordination Limits to Growth",
       category: "progress",
       status: "Work in progress",
       year: "2026",
