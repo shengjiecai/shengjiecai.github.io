@@ -137,5 +137,5 @@ window.SITE = {
 
   personalSummary: "A (maybe) secret garden.",
 
-  footerNote: "© Shengjie Cai. Last updated July 19, 2026."
+  footerNote: "© Shengjie Cai. Last updated Nov 13, 2026."
 };
